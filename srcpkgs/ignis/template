@@ -1,0 +1,17 @@
+# Template file for 'ignis'
+pkgname=ignis
+_commit=5fd140227c0f2d9d65a98d4af78b95b1558966da
+version=2026.01.03
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-setuptools_scm hatchling hatch-vcs"
+depends="python3-click python3-loguru python3-cairo python3-gobject
+ python3-rich"
+short_desc="Widget framework for building desktop shells"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="LGPL-2.1-only"
+homepage="https://ignis-sh.github.io/ignis/stable/index.html"
+distfiles="https://github.com/ignis-sh/ignis/archive/${_commit}.tar.gz>${version}.tar.gz"
+checksum="e0a5d6a733d8472226f04c962025f4e16e24b2f68a8efb3a2c972583c14e0295"
+
+export SETUPTOOLS_SCM_PRETEND_VERSION=$version
