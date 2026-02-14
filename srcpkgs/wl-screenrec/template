@@ -1,0 +1,13 @@
+# Template file for 'wl-screenrec'
+pkgname=wl-screenrec
+version=0.2.0
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="ffmpeg6-devel libclang21 clang21-devel libdrm-devel"
+short_desc="High performance wlroots screen recording, featuring hardware encoding"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/russelltg/wl-screenrec"
+distfiles="https://github.com/russelltg/wl-screenrec/archive/refs/tags/v${version}.tar.gz"
+checksum=214cbd9c74a57f980eacb6623743dea94f20b2f3fcea4705cec2b865b5f84fbb
