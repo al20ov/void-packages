@@ -1,5 +1,5 @@
 pkgname=helium-bin
-version=0.9.4.1
+version=0.10.5.1
 revision=1
 archs="x86_64 aarch64"
 short_desc="Private, fast, and honest web browser"
@@ -10,12 +10,12 @@ homepage="https://helium.computer/"
 case "$XBPS_TARGET_MACHINE" in
 	x86_64)
 		distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz"
-		checksum="a97b8352d6a7938e8ef3b8c04b1733995324d220f825a662da3f4b4817bd5423"
+		checksum="de138cf4f7eec2d753c905153b3a40c9dbfa2d01c608a95f2a6f1366c749b36d"
 		wrksrc="helium-${version}-x86_64_linux"
 		;;
 	aarch64)
 		distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-arm64_linux.tar.xz"
-		checksum="1593222306d799b3070260bd60f242e6e447cb55bd64807479fc0616b09a60a7"
+		checksum="da1e425bece1cc35fd530e0f95119b5d133285bef226a3dee97909ed5cf35092"
 		wrksrc="helium-${version}-arm64_linux"
 		;;
 esac
