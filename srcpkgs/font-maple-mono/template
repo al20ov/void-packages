@@ -1,0 +1,18 @@
+# Template file for 'font-maple-mono'
+pkgname=font-maple-mono
+version=7.9
+revision=1
+depends="font-util"
+short_desc="Maple Mono font"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="OFL-1.1"
+homepage="https://github.com/subframe7536/maple-font"
+distfiles="https://github.com/subframe7536/maple-font/releases/download/v${version}/MapleMonoNormal-TTF-AutoHint.zip"
+checksum=d4c78ce61c64995a0ce7c306635e31b027ef785113109acbd9a9967f9c877b22
+
+font_dirs="/usr/share/fonts/TTF/maple"
+
+do_install() {
+	vmkdir usr/share/fonts/TTF/maple
+	vcopy "*.ttf" usr/share/fonts/TTF/maple
+}
