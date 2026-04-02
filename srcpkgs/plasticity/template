@@ -1,0 +1,31 @@
+# Template file for 'plasticity'
+pkgname=plasticity
+version=26.1.3
+revision=1
+archs="x86_64"
+depends="gtk+3 nss alsa-lib libdrm desktop-file-utils hicolor-icon-theme"
+short_desc="Solid and surface modeling tool"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="custom:plasticity"
+homepage="https://www.plasticity.xyz"
+distfiles="https://github.com/nkallen/plasticity/releases/download/v${version}/plasticity_${version}_amd64.deb"
+checksum=c9c8c2121f33aaac92bdb1f5856aa50d543060edb674bc5362648e6de37e1eca
+repository=nonfree
+restricted=yes
+nostrip=yes
+noshlibprovides=yes
+
+do_install() {
+	vcopy lib/plasticity usr/lib
+
+	vmkdir usr/bin
+	ln -s /usr/lib/plasticity/Plasticity ${DESTDIR}/usr/bin/plasticity
+
+	vinstall share/applications/plasticity.desktop 644 usr/share/applications
+	vinstall share/pixmaps/plasticity.png 644 usr/share/pixmaps
+
+	vsed -i ${DESTDIR}/usr/share/applications/plasticity.desktop \
+		-e 's|^Exec=plasticity|Exec=plasticity --no-sandbox|'
+
+	vlicense share/doc/plasticity/copyright
+}
