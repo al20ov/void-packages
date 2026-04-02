@@ -1,0 +1,32 @@
+pkgname=helium-bin
+version=0.10.8.1
+revision=1
+archs="x86_64 aarch64"
+short_desc="Private, fast, and honest web browser"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://helium.computer/"
+
+case "$XBPS_TARGET_MACHINE" in
+	x86_64)
+		distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz"
+		checksum="aaed06bc26e0e04ab5707ad37ab3b31fdf0a90bd0509255080b7be416c87f5de"
+		wrksrc="helium-${version}-x86_64_linux"
+		;;
+	aarch64)
+		distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-arm64_linux.tar.xz"
+		checksum="5111c2c559fae9041a8f9e0b797add172af635bf71a9531a9d30993e3c367d92"
+		wrksrc="helium-${version}-arm64_linux"
+		;;
+esac
+
+do_install() {
+	vmkdir usr/lib/helium
+	vcopy * usr/lib/helium
+
+	vmkdir usr/bin
+	ln -sf /usr/lib/helium/helium ${DESTDIR}/usr/bin/helium
+
+	vinstall helium.desktop 644 usr/share/applications/
+	vinstall product_logo_256.png 644 usr/share/icons/hicolor/256x256/apps helium.png
+}
