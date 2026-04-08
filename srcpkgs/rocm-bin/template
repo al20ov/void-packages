@@ -1,0 +1,76 @@
+# Template file for 'rocm-bin'
+pkgname=rocm-bin
+version=7.12.0
+revision=1
+archs="x86_64"
+depends="ocl-icd"
+short_desc="AMD ROCm GPU compute stack - prebuilt runtime libraries"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="MIT"
+homepage="https://github.com/ROCm/TheRock"
+# gfx110X (matches my 7900 GRE)
+distfiles="https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-all-${version}.tar.gz"
+checksum=bf652924ee221a867ce0ca39ff0a24e6dfa891db3467f51fdfa6a9ce57e351c8
+nopie=yes
+nostrip=yes
+nocross=yes
+create_wrksrc=yes
+noshlibprovides=yes
+
+do_install() {
+	local destrocm="${DESTDIR}/opt/rocm"
+	vmkdir opt/rocm
+
+	cp -a ${wrksrc}/lib "${destrocm}/"
+	# Remove devel-only stuff from lib/
+	rm -rf "${destrocm}/lib/cmake"
+	rm -f "${destrocm}/lib"/*.a
+	# Remove stub .so files
+	rm -f "${destrocm}/lib/opencl/libamdocl64.so"
+
+	vmkdir opt/rocm/llvm/lib
+	for f in ${wrksrc}/llvm/lib/*.so*; do
+		cp -a "${f}" "${destrocm}/llvm/lib/"
+	done
+	if [ -d "${wrksrc}/llvm/lib/amdgcn-amd-amdhsa" ]; then
+		cp -a "${wrksrc}/llvm/lib/amdgcn-amd-amdhsa" "${destrocm}/llvm/lib/"
+	fi
+
+	cp -a "${wrksrc}/amdgcn" "${destrocm}/"
+
+	vmkdir opt/rocm/bin
+	for tool in \
+		amd-smi \
+		clinfo \
+		hipcc \
+		hipcc_cmake_linker_helper \
+		hipconfig \
+		hipdemangleatp \
+		offload-arch \
+		roc-obj \
+		roc-obj-extract \
+		roc-obj-ls \
+		rocm-smi \
+		rocm_agent_enumerator \
+		rocminfo \
+		rocprofv3 \
+		rocprofv3-avail; do
+		[ -f "${wrksrc}/bin/${tool}" ] && cp -a "${wrksrc}/bin/${tool}" "${destrocm}/bin/"
+	done
+
+	cp -a "${wrksrc}/libexec" "${destrocm}/"
+
+	cp -a "${wrksrc}/share" "${destrocm}/"
+
+	vmkdir etc/OpenCL/vendors
+	echo "/opt/rocm/lib/opencl/libamdocl64.so" \
+		> "${DESTDIR}/etc/OpenCL/vendors/amdocl64.icd"
+
+	vmkdir etc/ld.so.conf.d
+	printf '/opt/rocm/lib\n/opt/rocm/llvm/lib\n' \
+		> "${DESTDIR}/etc/ld.so.conf.d/rocm.conf"
+
+	vmkdir etc/profile.d
+	printf '[ -d /opt/rocm/bin ] && export PATH="$PATH:/opt/rocm/bin"\n' \
+		> "${DESTDIR}/etc/profile.d/rocm.sh"
+}
