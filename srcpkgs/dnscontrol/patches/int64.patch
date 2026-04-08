@@ -1,0 +1,13 @@
+--- a/models/record.go
++++ b/models/record.go
+@@ -172,8 +172,8 @@
+ 		LocSize            uint8             `json:"locsize,omitempty"`
+ 		LocHorizPre        uint8             `json:"lochorizpre,omitempty"`
+ 		LocVertPre         uint8             `json:"locvertpre,omitempty"`
+-		LocLatitude        int               `json:"loclatitude,omitempty"`
+-		LocLongitude       int               `json:"loclongitude,omitempty"`
++		LocLatitude        int64             `json:"loclatitude,omitempty"`
++		LocLongitude       int64             `json:"loclongitude,omitempty"`
+ 		LocAltitude        uint32            `json:"localtitude,omitempty"`
+ 		LuaRType           string            `json:"luartype,omitempty"`
+ 		NaptrOrder         uint16            `json:"naptrorder,omitempty"`
