@@ -1,0 +1,23 @@
+# Template file for 'font-apple-color-emoji'
+pkgname=font-apple-color-emoji
+version=20260219
+revision=4
+_tag="macos-26-${version}-2aa12422"
+depends="font-util"
+short_desc="Apple Color Emoji font for Linux"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="custom:Apple-Proprietary"
+homepage="https://github.com/samuelngs/apple-emoji-ttf"
+distfiles="https://github.com/samuelngs/apple-emoji-ttf/releases/download/${_tag}/AppleColorEmoji-Linux.ttf"
+checksum=535a043af04706d24471059e64745bfc80d6617ada2eea3435dc5620dc0f5318
+font_dirs="/usr/share/fonts/TTF/emoji"
+provides="font:emoji-0_1"
+
+do_extract() {
+	install -Dm644 ${XBPS_SRCDISTDIR}/${pkgname}-${version}/AppleColorEmoji-Linux.ttf \
+		${wrksrc}/AppleColorEmoji-Linux.ttf
+}
+
+do_install() {
+	vinstall AppleColorEmoji-Linux.ttf 644 usr/share/fonts/TTF/emoji
+}
