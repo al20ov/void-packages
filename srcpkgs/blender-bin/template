@@ -1,0 +1,32 @@
+# Template file for 'blender-bin'
+pkgname=blender-bin
+version=5.2.2
+revision=1
+archs="x86_64"
+depends="desktop-file-utils hicolor-icon-theme libX11 libXfixes libXi libXrender
+ libxkbcommon vulkan-loader"
+short_desc="3D graphics creation suite (bin)"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="GPL-3.0-or-later"
+homepage="https://www.blender.org"
+distfiles="https://download.blender.org/release/Blender${version%.*}/blender-${version}-linux-x64.tar.xz"
+checksum=84098912789dc450e95697c4184fb8a90acbe5111c2ba4aede3fecb57806a168
+conflicts="blender"
+nostrip=yes
+nopie=yes
+noshlibprovides=yes
+noverifyrdeps=yes
+python_version=ignore
+
+do_install() {
+	vmkdir opt/blender
+	vcopy . opt/blender
+
+	vmkdir usr/bin
+	ln -sf /opt/blender/blender ${PKGDESTDIR}/usr/bin/blender
+	ln -sf /opt/blender/blender-thumbnailer ${PKGDESTDIR}/usr/bin/blender-thumbnailer
+
+	vinstall blender.desktop 644 usr/share/applications
+	vinstall blender.svg 644 usr/share/icons/hicolor/scalable/apps
+	vinstall blender-symbolic.svg 644 usr/share/icons/hicolor/symbolic/apps
+}
