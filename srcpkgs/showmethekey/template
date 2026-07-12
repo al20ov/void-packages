@@ -1,0 +1,13 @@
+# Template file for 'showmethekey'
+pkgname=showmethekey
+version=1.21.0
+revision=1
+build_style=meson
+hostmakedepends="pkg-config gettext gtk4-update-icon-cache glib-devel"
+makedepends="libevdev-devel libudev-devel libinput-devel gtk4-devel libadwaita-devel"
+short_desc="Show keys you typed on screen"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="Apache-2.0"
+homepage="https://showmethekey.alynx.one"
+distfiles="https://github.com/AlynxZhou/showmethekey/archive/refs/tags/v${version}.tar.gz"
+checksum=db36e7bac76262e6155d48ae72e126b29b9aff711c72f073bc390a424c6bf86d
