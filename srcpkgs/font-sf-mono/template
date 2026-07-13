@@ -1,0 +1,31 @@
+# Template file for 'font-sf-mono'
+pkgname=font-sf-mono
+version=1.0.0
+revision=1
+hostmakedepends="p7zip cpio"
+depends="font-util"
+short_desc="Apple SF Mono font"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="custom:Apple-Proprietary"
+homepage="https://developer.apple.com/fonts/"
+distfiles="https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg"
+checksum=6d4a0b78e3aacd06f913f642cead1c7db4af34ed48856d7171a2e0b55d9a7945
+font_dirs="/usr/share/fonts/OTF/sf-mono"
+
+do_extract() {
+	7z x "${XBPS_SRCDISTDIR}/${pkgname}-${version}/SF-Mono.dmg" \
+		-o"${wrksrc}" -y >/dev/null
+		7z x "${wrksrc}/SFMonoFonts/SF Mono Fonts.pkg" \
+		-o"${wrksrc}" -y >/dev/null
+	cd "${wrksrc}"
+	gzip -dc SFMonoFonts.pkg/Payload | cpio -idm
+	rm -rf SFMonoFonts SFMonoFonts.pkg Resources
+	rm -f "[TOC].xml" Distribution .background.png .DS_Store
+	rm -f "[HFS+ Private Data]" ".HFS+ Private Directory Data"
+}
+
+do_install() {
+	for f in "${wrksrc}"/Library/Fonts/*.otf; do
+		vinstall "${f}" 644 usr/share/fonts/OTF/sf-mono
+	done
+}
