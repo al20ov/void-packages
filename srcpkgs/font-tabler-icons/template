@@ -1,0 +1,19 @@
+# Template file for 'font-tabler-icons'
+pkgname=font-tabler-icons
+version=3.44.0
+revision=1
+depends="font-util"
+short_desc="Tabler icons as a font"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="MIT"
+homepage="https://tabler.io/icons"
+# npm view @tabler/icons-webfont@${version} dist.tarball
+distfiles=https://registry.npmjs.org/@tabler/icons-webfont/-/icons-webfont-${version}.tgz
+checksum=045d186a1169124d6d0571f7f2cfaced859b36a0811e86c7e181d1f2d4f431b2
+
+font_dirs="/usr/share/fonts/TTF/tabler"
+
+do_install() {
+	vmkdir usr/share/fonts/TTF/tabler
+	vcopy "dist/fonts/*.ttf" usr/share/fonts/TTF/tabler
+}
