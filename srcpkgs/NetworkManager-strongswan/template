@@ -1,6 +1,6 @@
 # Template file for 'NetworkManager-strongswan'
 pkgname=NetworkManager-strongswan
-version=1.6.3
+version=1.6.5
 revision=1
 build_style=gnu-configure
 configure_args="--disable-static --disable-more-warnings"
@@ -12,4 +12,4 @@ maintainer="Louis Dupré Bertoni <contact@louisdb.xyz>"
 license="GPL-2.0-or-later"
 homepage="https://www.strongswan.org/"
 distfiles="https://download.strongswan.org/NetworkManager/NetworkManager-strongswan-${version}.tar.bz2"
-checksum=96faaf38ac754ab22a0dc4df431c45cb747230666d66f81d12095750e2c19d9a
+checksum=3a91cadfcc7c74616470b2b0f80db4dc17f103362b386ed763479d8500501b67
