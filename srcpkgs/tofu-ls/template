@@ -1,0 +1,18 @@
+# Template file for 'tofu-ls'
+pkgname=tofu-ls
+version=0.5.3
+revision=1
+build_style=go
+go_import_path="github.com/opentofu/tofu-ls"
+checkdepends="git"
+short_desc="OpenTofu Language Server"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="MPL-2.0"
+homepage="https://github.com/opentofu/tofu-ls"
+changelog="https://raw.githubusercontent.com/opentofu/tofu-ls/refs/heads/main/CHANGELOG.md"
+distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
+checksum=c55400f22a8f3a34eefba87ada87caa4eba79ca3175d2f62ca3cceab35699dd8
+
+post_install() {
+	vlicense LICENSE
+}
