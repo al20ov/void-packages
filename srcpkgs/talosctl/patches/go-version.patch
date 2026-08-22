@@ -1,0 +1,107 @@
+diff --git a/go.mod b/go.mod
+index 67fd5b92c..20debb833 100644
+--- a/go.mod
++++ b/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos
+ 
+-go 1.26.6
++go 1.26
+ 
+ replace (
+ 	// forked coredns so we don't carry caddy and other stuff into the Talos
+diff --git a/go.work b/go.work
+index 78ba9ee15..a405c723b 100644
+--- a/go.work
++++ b/go.work
+@@ -1,4 +1,4 @@
+-go 1.26.6
++go 1.26
+ 
+ use (
+ 	.
+diff --git a/hack/cloud-image-uploader/go.mod b/hack/cloud-image-uploader/go.mod
+index 4f6a77609..2dae5b86c 100644
+--- a/hack/cloud-image-uploader/go.mod
++++ b/hack/cloud-image-uploader/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/cloud-image-uploader
+ 
+-go 1.26.0
++go 1.26
+ 
+ require (
+ 	cloud.google.com/go/storage v1.61.3
+diff --git a/pkg/machinery/go.mod b/pkg/machinery/go.mod
+index 5294e007b..470ea5d01 100644
+--- a/pkg/machinery/go.mod
++++ b/pkg/machinery/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos/pkg/machinery
+ 
+-go 1.26.6
++go 1.26
+ 
+ // forked ethtool introduces missing APIs
+ replace github.com/mdlayher/ethtool => github.com/siderolabs/ethtool v0.4.0-sidero
+diff --git a/tools/docgen/go.mod b/tools/docgen/go.mod
+index b5d1d98ba..595b88cf7 100644
+--- a/tools/docgen/go.mod
++++ b/tools/docgen/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos/tools/docgen
+ 
+-go 1.26.0
++go 1.26
+ 
+ require (
+ 	github.com/gomarkdown/markdown v0.0.0-20260217112301-37c66b85d6ab
+diff --git a/tools/go.mod b/tools/go.mod
+index fbeaa8da4..1ecb34507 100644
+--- a/tools/go.mod
++++ b/tools/go.mod
+@@ -2,7 +2,7 @@ module github.com/siderolabs/talos/tools
+ 
+ // upgrading all tools: go get tool
+ 
+-go 1.26.6
++go 1.26
+ 
+ tool (
+ 	github.com/aarzilli/whydeadcode
+diff --git a/tools/gotagsrewrite/go.mod b/tools/gotagsrewrite/go.mod
+index 17ad30db7..19fd6ac26 100644
+--- a/tools/gotagsrewrite/go.mod
++++ b/tools/gotagsrewrite/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos/tools/gotagsrewrite
+ 
+-go 1.26.0
++go 1.26
+ 
+ require (
+ 	github.com/fatih/structtag v1.2.0
+diff --git a/tools/redactgen/go.mod b/tools/redactgen/go.mod
+index 8f65555ad..2270c6466 100644
+--- a/tools/redactgen/go.mod
++++ b/tools/redactgen/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos/tools/redactgen
+ 
+-go 1.26.6
++go 1.26
+ 
+ require golang.org/x/tools v0.49.0
+ 
+diff --git a/tools/structprotogen/go.mod b/tools/structprotogen/go.mod
+index 3b47647dc..d759c7ebb 100644
+--- a/tools/structprotogen/go.mod
++++ b/tools/structprotogen/go.mod
+@@ -1,6 +1,6 @@
+ module github.com/siderolabs/talos/tools/structprotogen
+ 
+-go 1.26.0
++go 1.26
+ 
+ require (
+ 	github.com/fatih/structtag v1.2.0
