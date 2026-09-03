@@ -1,0 +1,20 @@
+adds unsigned int to the MIN(a, b) macro to fix builds on 32-bit architectures
+where size_t resolves to an unsigned int
+
+diff --git a/src/libutils.h b/src/libutils.h
+index 938e241..81bd905 100644
+--- a/src/libutils.h
++++ b/src/libutils.h
+@@ -26,10 +26,12 @@
+ 		return a < b ? a : b;			\
+ 	}
+ 
++GEN_MIN(u, unsigned int)
+ GEN_MIN(ul, unsigned long)
+ GEN_MIN(ull, unsigned long long)
+ 
+ #define MIN(a, b) _Generic(1 ? (a) : (b),	\
++	unsigned int: u_min,			\
+ 	unsigned long: ul_min,			\
+ 	unsigned long long: ull_min		\
+ 	)(a, b)
