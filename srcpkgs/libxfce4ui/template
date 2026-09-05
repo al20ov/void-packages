@@ -1,10 +1,10 @@
 # Template file for 'libxfce4ui'
 pkgname=libxfce4ui
-version=4.20.2
+version=4.21.9
 revision=1
-build_style=gnu-configure
+build_style=meson
 build_helper="gir"
-configure_args="--disable-static --enable-tests --enable-introspection --enable-vala"
+#configure_args="--disable-static --enable-tests --enable-introspection --enable-vala"
 conf_files="/etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml"
 hostmakedepends="pkg-config glib-devel gettext vala"
 makedepends="gtk+3-devel glade3-devel libxfce4util-devel xfconf-devel
@@ -13,8 +13,8 @@ short_desc="Replacement of the old libxfcegui4 library"
 maintainer="Đoàn Trần Công Danh <congdanhqx@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://xfce.org/"
-distfiles="https://archive.xfce.org/src/xfce/${pkgname}/${version%.*}/${pkgname}-${version}.tar.bz2"
-checksum=5d3d67b1244a10cee0e89b045766c05fe1035f7938f0410ac6a3d8222b5df907
+distfiles="https://archive.xfce.org/src/xfce/${pkgname}/${version%.*}/${pkgname}-${version}.tar.xz"
+checksum=d2072e0c3c27e39e1c38050c660f34806e34e8b1abba660684db586f8c4f7142
 
 libxfce4ui-devel_package() {
 	depends="${sourcepkg}>=${version}_${revision}
@@ -24,16 +24,9 @@ libxfce4ui-devel_package() {
 		vmove usr/include
 		vmove usr/lib/pkgconfig
 		vmove "usr/lib/*.so"
-		vmove usr/share/gtk-doc
+		# vmove usr/share/gtk-doc
 		vmove usr/share/gir-1.0
 		vmove usr/share/vala
 	}
 }
 
-libxfce4ui-glade_package() {
-	short_desc+=" - glade plugins"
-	pkg_install() {
-		vmove usr/lib/glade
-		vmove usr/share/glade
-	}
-}
