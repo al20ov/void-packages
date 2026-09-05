@@ -1,13 +1,13 @@
 # Template file for 'eudev'
 
-_UDEV_VERSION="251" # compatible udev version provided
+_UDEV_VERSION="257" # compatible udev version provided
 
 pkgname=eudev
 version=3.2.14
-revision=2
+revision=3
 build_style=gnu-configure
 configure_args="--enable-hwdb --enable-manpages"
-hostmakedepends="pkg-config gperf"
+hostmakedepends="pkg-config gperf automake"
 makedepends="libblkid-devel libkmod-devel"
 checkdepends="xz tar perl"
 short_desc="Fork of systemd-udev (enhanced userland device daemon)"
