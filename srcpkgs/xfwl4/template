@@ -1,0 +1,14 @@
+# Template file for 'xfwl4'
+pkgname=xfwl4
+version=4.21.1
+revision=1
+build_style=meson
+hostmakedepends="cargo pkg-config gettext"
+makedepends="glib-devel gtk+3-devel libxfce4ui-devel libSM-devel startup-notification-devel libdisplay-info-devel libinput-devel libseat-devel eudev-libudev-devel"
+depends=""
+short_desc="XFCE's Wayland compositor"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://gitlab.xfce.org/xfce/xfwl4"
+distfiles="https://archive.xfce.org/src/xfce/${pkgname}/${version%.*}/${pkgname}-${version}.tar.xz"
+checksum=fee9a4777009bdbee160fd9e247d99060a26ef933e942303f7689d19cf6441ff
