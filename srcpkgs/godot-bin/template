@@ -1,0 +1,24 @@
+# Template file for 'godot-bin'
+pkgname=godot-bin
+version=4.7.2
+revision=1
+archs="x86_64"
+depends=""
+short_desc="Multiplatform 2D and 3D engine - binary version"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="MIT"
+homepage="https://www.godotengine.org/"
+distfiles="https://github.com/godotengine/godot/releases/download/${version}-stable/Godot_v${version}-stable_linux.x86_64.zip"
+checksum="cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
+conflicts="godot"
+noshlibprovides=yes
+nostrip=yes
+
+do_install() {
+	vbin Godot_v4.7.2-stable_linux.x86_64 godot
+
+	vmkdir usr/share/applications
+	vmkdir usr/share/pixmaps
+	vcopy "${FILESDIR}/org.godotengine.Godot.desktop" usr/share/applications/
+	vcopy "${FILESDIR}/icon.svg" usr/share/pixmaps/godot.svg
+}
