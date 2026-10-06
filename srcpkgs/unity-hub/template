@@ -1,0 +1,25 @@
+# Template file for 'unity-hub'
+pkgname=unity-hub
+version=3.22.2
+revision=1
+archs="x86_64"
+hostmakedepends=""
+makedepends=""
+depends=""
+short_desc="Unity Hub"
+maintainer="Orphaned <orphan@voidlinux.org>"
+license="GPL-3.0-or-later"
+homepage="https://docs.unity.com/en-us/hub"
+#changelog=""
+distfiles="https://hub-dist.unity3d.com/artifactory/hub-debian-prod-local/pool/main/u/unity/unityhub_amd64/UnityHubSetup-${version}-amd64.deb"
+checksum=a0523a62fc6f221a9cea272ca347719671fcd519b8b1d9ff833a3914dec12220
+nostrip=yes
+noshlibprovides=yes
+
+do_install() {
+	vcopy lib/unityhub usr/lib/unityhub
+	vcopy share usr/share
+
+	vmkdir usr/bin
+	ln -s /usr/lib/unityhub/unityhub ${DESTDIR}/usr/bin/unityhub
+}
