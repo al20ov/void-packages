@@ -1,0 +1,15 @@
+# Template file for 'talosctl'
+pkgname=talosctl
+version=1.14.2
+revision=1
+build_style=go
+go_import_path="github.com/siderolabs/talos"
+go_package="${go_import_path}/cmd/${pkgname}"
+go_build_tags="grpcnotrace"
+make_check_target="${go_package}/..."
+short_desc="Talos Linux management CLI"
+maintainer="al20ov <nicolas.antauf@gmail.com>"
+license="MPL-2.0"
+homepage="https://www.siderolabs.com/talos-linux"
+distfiles="https://github.com/siderolabs/talos/archive/refs/tags/v${version}.tar.gz"
+checksum=00e51df1940b836fdbc148d8c263823669e20aa5f6424b3be15127c6cc89acc9
