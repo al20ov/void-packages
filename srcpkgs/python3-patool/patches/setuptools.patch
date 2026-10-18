@@ -1,0 +1,15 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 0ae19fb..80be468 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -48,8 +48,8 @@ dev = [
+ ]
+ 
+ [build-system]
+-requires = ["setuptools-reproducible>=0.1"]
+-build-backend = "setuptools_reproducible"
++requires = ["setuptools>=80.10.2"]
++build-backend = "setuptools.build_meta"
+ 
+ [tool.project]
+ # pin versions of Python and uv for development
