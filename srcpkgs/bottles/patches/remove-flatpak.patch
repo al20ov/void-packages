@@ -1,0 +1,57 @@
+diff --git a/bottles/frontend/meson.build b/bottles/frontend/meson.build
+index 6ff7c011..c26ea0b9 100644
+--- a/bottles/frontend/meson.build
++++ b/bottles/frontend/meson.build
+@@ -23,12 +23,6 @@ params_file = configure_file(
+     configuration: conf
+ )
+ 
+-fs = import('fs')
+-
+-if not fs.is_file('/' + '.flatpak-info')
+-  error('file does not exist')
+-endif
+-
+ bottles_sources = [
+   '__init__.py',
+   'main.py',
+diff --git a/bottles/frontend/windows/window.py b/bottles/frontend/windows/window.py
+index d73e61d9..850c14d9 100644
+--- a/bottles/frontend/windows/window.py
++++ b/bottles/frontend/windows/window.py
+@@ -147,35 +147,6 @@ class BottlesWindow(Adw.ApplicationWindow):
+             manager = Adw.StyleManager.get_default()
+             manager.set_color_scheme(Adw.ColorScheme.FORCE_DARK)
+ 
+-        # Be VERY explicit that non-sandboxed environments are unsupported
+-        if not os.environ.get("CPAK_CONTAINER_ID") and not Xdp.Portal.running_under_sandbox():
+-
+-            def response(dialog, response, *args):
+-                if response == "close":
+-                    quit(1)
+-
+-            body = _(
+-                "Bottles is only supported within a sandboxed environment. Official sources of Bottles are available at"
+-            )
+-            download_url = "usebottles.com/download"
+-
+-            error_dialog = Adw.AlertDialog.new(
+-                _("Unsupported Environment"),
+-                f"{body} <a href='https://{download_url}' title='https://{download_url}'>{download_url}.</a>",
+-            )
+-
+-            error_dialog.add_response("close", _("Close"))
+-            error_dialog.set_body_use_markup(True)
+-            error_dialog.connect("response", response)
+-            error_dialog.present(self)
+-            logging.error(
+-                _(
+-                    "Bottles is only supported within a sandboxed format. Official sources of Bottles are available at:"
+-                )
+-            )
+-            logging.error("https://usebottles.com/download/")
+-            return
+-
+         # Loading view
+         self.page_loading = LoadingView()
+ 
