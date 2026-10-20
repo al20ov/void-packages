@@ -1,6 +1,7 @@
 # Template file for 'vis'
 pkgname=vis
-version=0.9
+version=10b630a
+_commit=10b630af09404cf2c887e2d7e6e24ecda9d05ea7
 revision=1
 build_style=gnu-configure
 hostmakedepends="pkg-config"
@@ -10,8 +11,8 @@ short_desc="Vi-like editor based on Plan 9's structural regular expressions"
 maintainer="O. Sánchez <osanchez@firemail.cc>"
 license="ISC"
 homepage="https://github.com/martanne/vis"
-distfiles="https://github.com/martanne/vis/archive/v${version}.tar.gz"
-checksum=bd37ffba5535e665c1e883c25ba5f4e3307569b6d392c60f3c7d5dedd2efcfca
+distfiles="https://github.com/martanne/vis/archive/${_commit}.tar.gz"
+checksum=f14da7e26cc1bf14ecd4d668aa44e6710183ff8b8af5f539a7f39ee1cfed7550
 conflicts="outils" # /usr/bin/vis
 
 post_install() {
